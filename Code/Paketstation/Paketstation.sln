@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paketstation", "Paketstation\Paketstation.csproj", "{1A8814D4-61C4-4327-85EB-A50A89509172}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A8814D4-61C4-4327-85EB-A50A89509172}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{1A8814D4-61C4-4327-85EB-A50A89509172}.Debug|anycpu.Build.0 = Debug|anycpu
+		{1A8814D4-61C4-4327-85EB-A50A89509172}.Release|anycpu.ActiveCfg = Release|anycpu
+		{1A8814D4-61C4-4327-85EB-A50A89509172}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81E887C3-2181-4B1C-8736-AB1241D6A59A}
+	EndGlobalSection
+EndGlobal
