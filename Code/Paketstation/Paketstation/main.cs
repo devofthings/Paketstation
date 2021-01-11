@@ -2,7 +2,7 @@
  * Autor: Christopher Winter
  * Klasse: IA119
  * Datei: UserInterface.cs
- * Beschreibung: Das ist die main Klasse sie ist der Startpunkt der Programms
+ * Beschreibung: Das ist die main Klasse sie ist der Startpunkt des Paketstation Programms
  **/
 namespace Paketstation
 {
@@ -10,7 +10,8 @@ namespace Paketstation
     {
         public static void Main(string[] args)
         {
-            
+            Controller c = new Controller();
+            c.run();
         }
     }
 }

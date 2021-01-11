@@ -1,9 +1,11 @@
-﻿/**
- * Autor: Christopher Winter
- * Klasse: IA119
- * Datei: UserInterface.cs
- * Beschreibung: Diese Klasse bildet das User Interface und alle seien Funktionen ab.
- **/
+﻿
+using System;
+/**
+* Autor: Christopher Winter
+* Klasse: IA119
+* Datei: UserInterface.cs
+* Beschreibung: Diese Klasse bildet das User Interface und alle seien Funktionen ab.
+**/
 namespace Paketstation
 {
     public class UserInterface
@@ -21,10 +23,6 @@ namespace Paketstation
         {
 
         }
-        public UserInterface(string text)
-        {
-            Text = text;
-        }
         #endregion
 
         #region Worker
@@ -32,9 +30,9 @@ namespace Paketstation
         {
 
         }
-        public string TextAusgeben()
+        public void TextAusgeben(string Text)
         {
-            return Text;
+            Console.WriteLine(Text);
         }
         #endregion
     }

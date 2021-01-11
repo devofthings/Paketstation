@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 /**
 * Autor: Christopher Winter
 * Klasse: IA119
@@ -38,26 +39,76 @@ namespace Paketstation
         #endregion
 
         #region Worker
-        public void PaketAnnehmen(Paket paket)
+        public void PaketAbgeben(Paket paket)
         {
-            // TODO ADD Paket to Paket Annehmen
-            // Faecher.Add(paket);
+            /* Check ob ein Fach frei ist
+             * Über alle Paketfächer gehen,
+             * Checken ob Paket vorhanden ist
+             * Wenn frei füge Paket zu diesem Paketfach hinzu und gebe Paketfachnummer zurück
+             * Wenn kein Fach frei ist gebe Fehlermeldung zurück: "Station voll" o.ä
+             */
+            if(Faecher.Exists(f => f.Belegt == false))
+            {
+                foreach (Paketfach fach in Faecher)
+                {
+                    if (fach.Belegt == false)
+                    {
+                        fach.PaketEinfuegen(paket);
+                        Terminal.TextAusgeben($"Paket wurde in Paketfach Nr.{fach.Nummer} eingelagert.");
+                        break;
+                    }
+                    else {}
+                }
+            }
+            else
+            {
+                Terminal.TextAusgeben("Leider ist kein Paketfach frei.");
+            }
+            
         }
-        public List<Paketfach> PaketeListen()
+        public void PaketeListen()
         {
-            return Faecher;
+            /*
+             * Gehe über alle Fächer
+             * Wenn Paket vorhanden gebe PaketfachID & Abesender + Empfänger aus zurück
+             */
+            foreach(Paketfach fach in Faecher)
+            {
+                Terminal.TextAusgeben($"Paketfach Nr.{fach.Nummer}, Belegt: {fach.Belegt}");
+                if (fach.Belegt == true)
+                {
+                    Terminal.TextAusgeben($"{fach.ErhaltePaketInfo()}");
+                }
+            }
         }
-        public void Abgeben()
+        public Paket PaketAbholen()
         {
-            //TODO change void to Paket
+            /* TODO Frage nach ID
+             * Gehe über alle Fächer
+             * Wenn Paket vorhanden, prüfe ob Name = Empfänger ist
+             * Wenn ja gebe PaketfachID zurück
+             */
+            Terminal.TextAusgeben("Welches Paket möchten Sie abholen? Bitte geben sie die Paketfach ID ein:");
+            int gewaehlteID = Convert.ToInt32(Console.ReadLine());
+            if(Faecher[gewaehlteID - 1].Belegt == true)
+            {
+                Terminal.TextAusgeben("Paket entnommen.");
+                return Faecher[gewaehlteID - 1].PaketAusgeben();
+            }
+            else
+            {
+                Terminal.TextAusgeben("Dieses Paketfach ist leer.");
+            }
+            return null;
         }
-        public void PaketFinden()
+        public void PaketFinden(string empfaenger, Paketfach paketfach)
         {
             //TODO List Paket with id maybe?
         }
-        private void StatusAbfragen(int id)
+        public void StatusAusgeben()
         {
-            //TODO Add some code
+            Terminal.TextAusgeben("Willkommen an der Paketstation");
+            Terminal.TextAusgeben(Standort);
         }
 
         #endregion

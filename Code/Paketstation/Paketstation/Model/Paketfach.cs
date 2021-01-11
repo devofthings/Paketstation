@@ -2,7 +2,7 @@
  * Autor: Christopher Winter
  * Klasse: IA119
  * Datei: Paketfach.cs
- * Beschreibung: Diese Klasse bildet die Paketstaion ab
+ * Beschreibung: Diese Klasse bildet ein Paketfach in einer Packstation ab
  **/
 namespace Paketstation
 {
@@ -11,15 +11,15 @@ namespace Paketstation
         #region Attributes
         private Paket _inhalt;
         private int _nummer;
-        private bool _status;
         private bool _belegt;
+        private bool _offen;
         #endregion
 
         #region Propertys
         public Paket Inhalt { get => _inhalt; set => _inhalt = value; }
         public int Nummer { get => _nummer; set => _nummer = value; }
-        public bool Status { get => _status; set => _status = value; }
         public bool Belegt { get => _belegt; set => _belegt = value; }
+        public bool Offen { get => _offen; set => _offen = value; }
         #endregion
 
         #region Contructors
@@ -27,39 +27,44 @@ namespace Paketstation
         {
 
         }
-        public Paketfach(Paket inhalt, int nummer, bool status, bool belegt)
+        public Paketfach(Paket inhalt, int nummer, bool belegt, bool offen)
         {
             Inhalt = inhalt;
             Nummer = nummer;
-            Status = status;
             Belegt = belegt;
+            Offen = offen;
         }
         #endregion
 
         #region Worker
         public void Oeffnen()
         {
-
+            Offen = true;
         }
         public void Schliessen()
         {
-
+            Offen = false;
         }
         public void ErhalteBeleg() //bool
         {
 
         }
-        public void ErhaltePaketInfo() //string
+        public string ErhaltePaketInfo() //string
         {
-
+            return $"Absender: {Inhalt.Absender}\n" +
+                   $"Empfänger: {Inhalt.Empfaenger}";
         }
-        public void PaketEinfuegen()
+        public void PaketEinfuegen(Paket paket)
         {
-
+            Inhalt = paket;
+            Belegt = true;
         }
-        public void PaketAusgeben() //paket
+        public Paket PaketAusgeben() //paket
         {
-
+            Belegt = false;
+            Paket ausgabe = Inhalt;
+            Inhalt = null;
+            return ausgabe;
         }
         #endregion
     }
