@@ -61,9 +61,9 @@ namespace Paketstation
         }
         public Paket PaketAusgeben() //paket
         {
-            Belegt = false;
             Paket ausgabe = Inhalt;
             Inhalt = null;
+            Belegt = false;
             return ausgabe;
         }
         #endregion

@@ -37,13 +37,15 @@ namespace Paketstation
         #endregion
 
         #region Worker
-        public void PaketEinliefern() // paket
+        public Paket PaketEinliefern()
         {
-
+            Paket tmp = Paket;
+            Paket = null;
+            return tmp;
         }
-        public void PaketAbholen(Paket paket)
+        public void PaketAbholen(Paketstation station)
         {
-
+            Paket = station.PaketAbholen();
         }
         #endregion
     }

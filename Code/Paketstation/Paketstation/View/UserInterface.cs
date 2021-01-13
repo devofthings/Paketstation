@@ -34,6 +34,14 @@ namespace Paketstation
         {
             Console.WriteLine(Text);
         }
+        public void MenueAusgeben()
+        {
+            TextAusgeben("Was möchten Sie tun?");
+            TextAusgeben("1) Paket abgeben.");
+            TextAusgeben("2) Paket abholen.");
+            TextAusgeben("3) Pakete listen.");
+            TextAusgeben("4) Beenden");
+        }
         #endregion
     }
 }

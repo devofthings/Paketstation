@@ -40,36 +40,56 @@ namespace Paketstation
         {
             UserInterface ui = new UserInterface();
 
-            List<Paketfach> faecher = new List<Paketfach>();
             // Inititialisieren von 9 Paketfächern
+            List<Paketfach> faecher = new List<Paketfach>();
             for(int counter = 1; counter <= 9; counter += 1)
             {
                 Paketfach p = new Paketfach(null, counter, false, false);
                 faecher.Add(p);
             }
 
+            // Initialisieren von 3 Testkunden
+            Kunde alfa = new Kunde(
+                new Paket("Buchenweg 1337", 3000, "NORMAL", "Charlie", "Alfa"),
+                1,
+                "Alfa",
+                "Eichenweg 12, 12345 Dortmund"
+            );
+            Kunde bravo = new Kunde(
+                new Paket("Eichenweg 12, 12345 Dortmund", 1000, "NORMAL", "Alfa", "Bravo"),
+                2,
+                "Bravo",
+                "Birkenweg 7, 54321 Köln"
+            );
+            Kunde charlie = new Kunde(
+                null,
+                3,
+                "Charlie",
+                "Buchenweg 1337, 00000 Nullstadt"
+            );
 
             Paketstation station = new Paketstation(1, "Teststraße 1 00000 Teststadt", ui, faecher);
             station.StatusAusgeben();
 
             while(Active)
             {
-                ui.TextAusgeben("Was möchten Sie tun?");
-                ui.TextAusgeben("1) Paket abgeben.");
-                ui.TextAusgeben("2) Paket abholen.");
-                ui.TextAusgeben("3) Pakete listen.");
-                ui.TextAusgeben("4) Beenden");
-
+                ui.MenueAusgeben();
                 int menueWahl = Convert.ToInt32(Console.ReadLine());
                 switch (menueWahl)
                 {
                     case 1:
-                        // ToDo: Soll der Kunde das Paket schon haben oder wird es hier initialisiert???
-                        Paket p = new Paket("95126 Entenhausen, Watschelstraße 113", 3000, "NORMAL", "Donald Duck", "Chris Winter");
-                        KundeLiefertPaketEin(station, p);
+                        if(alfa.Paket != null)
+                        {
+                            KundeLiefertPaketEin(station, alfa.PaketEinliefern());
+                        }
+                        else
+                        {
+                            ui.TextAusgeben("Sie haben nichts zum abgeben!");
+                        }
+                        
                         break;
                     case 2:
-                        KundeHoltPaketAb(station);
+                        charlie.PaketAbholen(station);
                         break;
                     case 3:
                         KundeListetPakete(station);
