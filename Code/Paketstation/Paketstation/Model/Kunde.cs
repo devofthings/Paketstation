@@ -47,6 +47,10 @@ namespace Paketstation
         {
             Paket = station.PaketAbholen();
         }
+        public bool HatPaket()
+        {
+            return !(Paket == null);
+        }
         #endregion
     }
 }
