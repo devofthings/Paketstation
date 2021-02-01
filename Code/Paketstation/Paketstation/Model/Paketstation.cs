@@ -81,19 +81,29 @@ namespace Paketstation
                 }
             }
         }
-        public Paket PaketAbholen()
+        public Paket PaketAbholen(string empfaenger)
         {
-            /* TODO Frage nach ID
+            /* Frage nach ID
              * Gehe über alle Fächer
              * Wenn Paket vorhanden, prüfe ob Name = Empfänger ist
              * Wenn ja gebe PaketfachID zurück
              */
+            Fachauswahl:
             Terminal.TextAusgeben("Welches Paket möchten Sie abholen? Bitte geben sie die Paketfach ID ein:");
             int gewaehlteID = Convert.ToInt32(Console.ReadLine());
             if(Faecher[gewaehlteID - 1].Belegt == true)
             {
-                Terminal.TextAusgeben("Paket entnommen.");
-                return Faecher[gewaehlteID - 1].PaketAusgeben();
+                if(Faecher[gewaehlteID - 1].Inhalt.Empfaenger == empfaenger)
+                {
+                    Terminal.TextAusgeben("Paket entnommen.");
+                    return Faecher[gewaehlteID - 1].PaketAusgeben();
+                }
+                else
+                {
+                    Terminal.TextAusgeben("In diesem Fach liegt kei nPaket für sie!");
+                    goto Fachauswahl;
+                }
+                
             }
             else
             {

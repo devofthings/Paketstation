@@ -45,11 +45,7 @@ namespace Paketstation
         {
             Offen = false;
         }
-        public void ErhalteBeleg() //bool
-        {
-
-        }
-        public string ErhaltePaketInfo() //string
+        public string ErhaltePaketInfo()
         {
             return $"Absender: {Inhalt.Absender}\n" +
                    $"Empfänger: {Inhalt.Empfaenger}";

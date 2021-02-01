@@ -40,9 +40,9 @@ namespace Paketstation
         #endregion
 
         #region Worker
-        public void StandortAbfrage()
+        public string PaketscheinAbfragen()
         {
-
+            return Paketschein;
         }
         #endregion
     }

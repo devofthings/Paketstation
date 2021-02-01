@@ -82,6 +82,7 @@ namespace Paketstation
             );
             Kunden.Add(charlie);
             #endregion
+
             Menue1:
             while (Menue1)
             {
@@ -133,29 +134,40 @@ namespace Paketstation
                             }
                             else {}
                         }
-                        
                         break;
+
                     case 2:
                         foreach(Kunde k in Kunden)
                         {
                             if(k.Kundennummer == ActiveKunde)
                             {
-                                k.PaketAbholen(station);
+                                if(k.HatPaket() == false)
+                                {
+                                    k.PaketAbholen(station);
+                                }
+                                else
+                                {
+                                    ui.TextAusgeben("Sie können nur 1 Paket tragen!");
+                                }
                             }
                             else {}
                         }
                         break;
+
                     case 3:
                         KundeListetPakete(station);
                         break;
+
                     case 4:
                         Menue1 = true;
                         Menue2 = false;
                         goto Menue1;
+
                     case 5:
                         Menue1 = false;
                         Menue2 = false;
                         break;
+
                     default:
                         break;
                 }
@@ -167,10 +179,7 @@ namespace Paketstation
         {
             station.PaketAbgeben(p);
         }
-        public void KundeHoltPaketAb(Paketstation station)
-        {
-            station.PaketAbholen();
-        }
+ 
         public void KundeListetPakete(Paketstation station)
         {
             station.PaketeListen();

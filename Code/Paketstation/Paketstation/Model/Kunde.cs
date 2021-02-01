@@ -45,7 +45,7 @@ namespace Paketstation
         }
         public void PaketAbholen(Paketstation station)
         {
-            Paket = station.PaketAbholen();
+            Paket = station.PaketAbholen(Name);
         }
         public bool HatPaket()
         {
