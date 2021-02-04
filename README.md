@@ -1,2 +1,4 @@
 # Paketstation
-Modellierung und Umsetzung einer Paketstation mit maximal 9 Fächern ohne Hol- und Bringservice
+Abbildung einer einzelnen Paketstation mit 9 Fächern in der Kommandozeile.   
+Diese Übung soll die OOP Paradigmen ABstraktion und Kapselung vermitteln.
+Geschrieben wurde dieses Programm in C#.
